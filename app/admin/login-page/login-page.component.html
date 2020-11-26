@@ -20,6 +20,6 @@
         </div>
     </div>
 
-    <button [disabled]="form.invalid" type="submit" class="btn-primary btn">Войти</button>
+    <button [disabled]="form.invalid || expectation" type="submit" class="btn-primary btn">Войти</button>
 </form>
 
