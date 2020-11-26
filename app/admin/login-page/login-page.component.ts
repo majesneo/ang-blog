@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
     expectation: boolean = false
 
     constructor(
-        private auth: AuthService,
+        public auth: AuthService,
         private router: Router
     ) {
     }
@@ -46,6 +46,8 @@ export class LoginPageComponent implements OnInit {
         this.auth.login(user).subscribe(() => {
             this.form.reset()
             this.router.navigate(['/admin', 'dashboard'])
+            this.expectation = false
+        }, () => {
             this.expectation = false
         })
     }
