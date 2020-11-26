@@ -1,1 +1,25 @@
-<p>login-page works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()" class="card">
+    <h2>Войти в Admin панель</h2>
+    <div [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}" class="form-control">
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email">
+        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validation">
+            <small *ngIf="form.get('email').errors.required">Введите email</small>
+            <small *ngIf="form.get('email').errors.email">Поле email не корректно</small>
+        </div>
+    </div>
+
+    <div [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}" class="form-control">
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password">
+        <div *ngIf="form.get('password').touched && form.get('password').invalid" class="validation">
+            <small *ngIf="form.get('password').errors.required">Введите password</small>
+            <small *ngIf="form.get('password').errors.minlength">Минимальная длина
+                {{form.get('password').errors.minlength.requiredLength}} символов. Сейчас
+                {{form.get('password').errors.minlength.actualLength}}</small>
+        </div>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="btn-primary btn">Войти</button>
+</form>
+

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+input:focus {
+  outline: none;
+}
+
 :root {
   --primary-color: #dc3545;
   --dark-color: #333333;
@@ -215,6 +219,7 @@ img {
 
   &.invalid {
     color: var(--primary-color);
+
     input {
       border-color: var(--primary-color);
     }
